@@ -34,6 +34,8 @@ object Timbered {
 
         // Register the KDeferredRegister to the mod-specific event bus
         ModBlocks.REGISTRY.register(MOD_BUS)
+        // Register the items to the mod-specific event bus
+        ModBlocks.BLOCK_ITEMS.register(MOD_BUS)
 
         val obj = runForDist(
             clientTarget = {
