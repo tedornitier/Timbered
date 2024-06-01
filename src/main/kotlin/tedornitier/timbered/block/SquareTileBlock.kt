@@ -10,7 +10,6 @@ import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BooleanProperty
 
 class SquareTileBlock : Block(Properties.of().lightLevel { 15 }.strength(3.0f)) {
-// TODO Blocks.OAK_LOG.properties()) {
 
     companion object {
         val NORTH: BooleanProperty = BooleanProperty.create("north")
