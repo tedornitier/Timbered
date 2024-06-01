@@ -1,6 +1,6 @@
-package example.examplemod
+package tedornitier.timbered
 
-import example.examplemod.block.ModBlocks
+import tedornitier.timbered.block.ModBlocks
 import net.minecraft.client.Minecraft
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
@@ -21,10 +21,10 @@ import thedarkcolour.kotlinforforge.neoforge.forge.runForDist
  *
  * An example for blocks is in the `blocks` package of this mod.
  */
-@Mod(ExampleMod.ID)
+@Mod(Timbered.ID)
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
-object ExampleMod {
-    const val ID = "examplemod"
+object Timbered {
+    const val ID = "timbered"
 
     // the logger for our mod
     val LOGGER: Logger = LogManager.getLogger(ID)
@@ -34,6 +34,8 @@ object ExampleMod {
 
         // Register the KDeferredRegister to the mod-specific event bus
         ModBlocks.REGISTRY.register(MOD_BUS)
+        // Register the items to the mod-specific event bus
+        ModBlocks.BLOCK_ITEMS.register(MOD_BUS)
 
         val obj = runForDist(
             clientTarget = {
