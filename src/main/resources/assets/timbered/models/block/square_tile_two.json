@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "timbered:block/square_tile_two",
+    "north": "timbered:block/square_tile_two",
+    "south": "timbered:block/square_tile_all",
+    "east": "timbered:block/square_tile_two",
+    "west": "timbered:block/square_tile_all",
+    "up": "timbered:block/square_tile_top",
+    "down": "timbered:block/square_tile_bottom"
+  }
+}
