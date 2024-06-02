@@ -82,6 +82,6 @@ class SquareBlockCorner : Block(Properties.of().strength(3.0f)) {
     }
 
     private fun isConnected(state: BlockState): Boolean {
-        return state.block is SquareBlockCorner || state.block is SquareBlockOne || state.block is SquareBlock
+        return state.block is SquareBlock || state.block is SquareBlockCorner
     }
 }
