@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "timbered:block/square_block_corner",
+    "north": "timbered:block/square_block_corner",
+    "south": "timbered:block/square_block_corner",
+    "east": "timbered:block/square_block_corner",
+    "west": "timbered:block/square_block_corner",
+    "up": "timbered:block/square_block_corner",
+    "down": "timbered:block/square_block_corner"
+  }
+}
