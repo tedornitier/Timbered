@@ -11,14 +11,14 @@ object ModBlocks {
     val REGISTRY = DeferredRegister.createBlocks(Timbered.ID)
 
     // Register the custom block
-    val SQUARE_TILE by REGISTRY.register("square_tile") { ->
-        SquareTileBlock()
+    val SQUARE_TILE by REGISTRY.register(SquareBlock.name) { ->
+        SquareBlock()
     }
 
     // Register block items
     val BLOCK_ITEMS = DeferredRegister.createItems(Timbered.ID)
 
-    val SQUARE_TILE_ITEM by BLOCK_ITEMS.register("square_tile") { ->
+    val SQUARE_TILE_ITEM by BLOCK_ITEMS.register(SquareBlock.name) { ->
         BlockItem(SQUARE_TILE, Item.Properties())
     }
 }
