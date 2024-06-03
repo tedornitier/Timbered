@@ -17,14 +17,20 @@ object ModBlocks {
     val SQUARE_BLOCK_CORNER by REGISTRY.register(SquareBlockCorner.NAME) { ->
         SquareBlockCorner()
     }
+    val SQUARE_BLOCK_DIAGONAL by REGISTRY.register(SquareBlockDiagonal.NAME) { ->
+        SquareBlockDiagonal()
+    }
 
     // Register block items
     val BLOCK_ITEMS = DeferredRegister.createItems(Timbered.ID)
 
-    val SQUARE_TILE_ITEM by BLOCK_ITEMS.register(SquareBlock.NAME) { ->
+    val SQUARE_ITEM by BLOCK_ITEMS.register(SquareBlock.NAME) { ->
         BlockItem(SQUARE_BLOCK, Item.Properties())
     }
-    val SQUARE_CORNER_TILE_ITEM by BLOCK_ITEMS.register(SquareBlockCorner.NAME) { ->
+    val SQUARE_CORNER_ITEM by BLOCK_ITEMS.register(SquareBlockCorner.NAME) { ->
         BlockItem(SQUARE_BLOCK_CORNER, Item.Properties())
+    }
+    val SQUARE_DIAGONAL_ITEM by BLOCK_ITEMS.register(SquareBlockDiagonal.NAME) { ->
+        BlockItem(SQUARE_BLOCK_DIAGONAL, Item.Properties())
     }
 }
