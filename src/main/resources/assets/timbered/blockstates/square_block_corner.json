@@ -1,0 +1,48 @@
+{
+  "variants": {
+    "vertical_position=bottom,horizontal_position=left,facing=north": { "model": "timbered:block/square_block_corner_bottom", "y": 0 },
+    "vertical_position=bottom,horizontal_position=left,facing=east": { "model": "timbered:block/square_block_corner_bottom", "y": 90 },
+    "vertical_position=bottom,horizontal_position=left,facing=south": { "model": "timbered:block/square_block_corner_bottom", "y": 180 },
+    "vertical_position=bottom,horizontal_position=left,facing=west": { "model": "timbered:block/square_block_corner_bottom", "y": 270 },
+
+    "vertical_position=bottom,horizontal_position=middle,facing=north": { "model": "timbered:block/square_block_one_bottom", "y": 0 },
+    "vertical_position=bottom,horizontal_position=middle,facing=east": { "model": "timbered:block/square_block_one_bottom", "y": 90 },
+    "vertical_position=bottom,horizontal_position=middle,facing=south": { "model": "timbered:block/square_block_one_bottom", "y": 180 },
+    "vertical_position=bottom,horizontal_position=middle,facing=west": { "model": "timbered:block/square_block_one_bottom", "y": 270 },
+
+    "vertical_position=bottom,horizontal_position=right,facing=north": { "model": "timbered:block/square_block_corner_bottom", "y": 0 },
+    "vertical_position=bottom,horizontal_position=right,facing=east": { "model": "timbered:block/square_block_corner_bottom", "y": 90 },
+    "vertical_position=bottom,horizontal_position=right,facing=south": { "model": "timbered:block/square_block_corner_bottom", "y": 180 },
+    "vertical_position=bottom,horizontal_position=right,facing=west": { "model": "timbered:block/square_block_corner_bottom", "y": 270 },
+
+    "vertical_position=middle,horizontal_position=left,facing=north": { "model": "timbered:block/square_block_corner_middle", "y": 0 },
+    "vertical_position=middle,horizontal_position=left,facing=east": { "model": "timbered:block/square_block_corner_middle", "y": 90 },
+    "vertical_position=middle,horizontal_position=left,facing=south": { "model": "timbered:block/square_block_corner_middle", "y": 180 },
+    "vertical_position=middle,horizontal_position=left,facing=west": { "model": "timbered:block/square_block_corner_middle", "y": 270 },
+
+    "vertical_position=middle,horizontal_position=middle,facing=north": { "model": "timbered:block/square_block_corner_middle", "y": 0 },
+    "vertical_position=middle,horizontal_position=middle,facing=east": { "model": "timbered:block/square_block_corner_middle", "y": 90 },
+    "vertical_position=middle,horizontal_position=middle,facing=south": { "model": "timbered:block/square_block_corner_middle", "y": 180 },
+    "vertical_position=middle,horizontal_position=middle,facing=west": { "model": "timbered:block/square_block_corner_middle", "y": 270 },
+
+    "vertical_position=middle,horizontal_position=right,facing=north": { "model": "timbered:block/square_block_corner_middle", "y": 0 },
+    "vertical_position=middle,horizontal_position=right,facing=east": { "model": "timbered:block/square_block_corner_middle", "y": 90 },
+    "vertical_position=middle,horizontal_position=right,facing=south": { "model": "timbered:block/square_block_corner_middle", "y": 180 },
+    "vertical_position=middle,horizontal_position=right,facing=west": { "model": "timbered:block/square_block_corner_middle", "y": 270 },
+
+    "vertical_position=top,horizontal_position=left,facing=north": { "model": "timbered:block/square_block_corner_top", "y": 0 },
+    "vertical_position=top,horizontal_position=left,facing=east": { "model": "timbered:block/square_block_corner_top", "y": 90 },
+    "vertical_position=top,horizontal_position=left,facing=south": { "model": "timbered:block/square_block_corner_top", "y": 180 },
+    "vertical_position=top,horizontal_position=left,facing=west": { "model": "timbered:block/square_block_corner_top", "y": 270 },
+
+    "vertical_position=top,horizontal_position=middle,facing=north": { "model": "timbered:block/square_block_one_top", "y": 0 },
+    "vertical_position=top,horizontal_position=middle,facing=east": { "model": "timbered:block/square_block_one_top", "y": 90 },
+    "vertical_position=top,horizontal_position=middle,facing=south": { "model": "timbered:block/square_block_one_top", "y": 180 },
+    "vertical_position=top,horizontal_position=middle,facing=west": { "model": "timbered:block/square_block_one_top", "y": 270 },
+
+    "vertical_position=top,horizontal_position=right,facing=north": { "model": "timbered:block/square_block_corner_top", "y": 0 },
+    "vertical_position=top,horizontal_position=right,facing=east": { "model": "timbered:block/square_block_corner_top", "y": 90 },
+    "vertical_position=top,horizontal_position=right,facing=south": { "model": "timbered:block/square_block_corner_top", "y": 180 },
+    "vertical_position=top,horizontal_position=right,facing=west": { "model": "timbered:block/square_block_corner_top", "y": 270 }
+  }
+}
