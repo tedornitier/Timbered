@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "facing=north,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top" },
+    "facing=east,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top", "y": 90 },
+    "facing=south,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top", "y": 180 },
+    "facing=west,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top", "y": 270 },
+
+    "facing=north,bottom=true": { "model": "timbered:block/square_block_high_diagonal_bottom" },
+    "facing=east,bottom=true": { "model": "timbered:block/square_block_high_diagonal_bottom", "y": 90 },
+    "facing=south,bottom=true": { "model": "timbered:block/square_block_high_diagonal_bottom", "y": 180 },
+    "facing=west,bottom=true": { "model": "timbered:block/square_block_high_diagonal_bottom", "y": 270 }
+  }
+}

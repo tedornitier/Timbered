@@ -21,6 +21,9 @@ object ModBlocks {
     val SQUARE_BLOCK_CROSS by REGISTRY.register(SquareBlockCross.NAME) { ->
         SquareBlockCross()
     }
+    val SQUARE_BLOCK_HIGH_DIAGONAL by REGISTRY.register(SquareBlockHighDiagonal.NAME) { ->
+        SquareBlockHighDiagonal()
+    }
 
     // Register block items
     val BLOCK_ITEMS = DeferredRegister.createItems(Timbered.ID)
@@ -30,6 +33,7 @@ object ModBlocks {
             register(SquareBlock.NAME, Supplier { BlockItem(SQUARE_BLOCK, Item.Properties()) })
             register(SquareBlockDiagonal.NAME, Supplier { BlockItem(SQUARE_BLOCK_DIAGONAL, Item.Properties()) })
             register(SquareBlockCross.NAME, Supplier { BlockItem(SQUARE_BLOCK_CROSS, Item.Properties()) })
+            register(SquareBlockHighDiagonal.NAME, Supplier { BlockItem(SQUARE_BLOCK_HIGH_DIAGONAL, Item.Properties()) })
         }
     }
 }
