@@ -15,9 +15,6 @@ object ModBlocks {
     val SQUARE_BLOCK by REGISTRY.register(SquareBlock.NAME) { ->
         SquareBlock()
     }
-    val SQUARE_BLOCK_CORNER by REGISTRY.register(SquareBlockCorner.NAME) { ->
-        SquareBlockCorner()
-    }
     val SQUARE_BLOCK_DIAGONAL by REGISTRY.register(SquareBlockDiagonal.NAME) { ->
         SquareBlockDiagonal()
     }
@@ -31,7 +28,6 @@ object ModBlocks {
     init {
         BLOCK_ITEMS.run {
             register(SquareBlock.NAME, Supplier { BlockItem(SQUARE_BLOCK, Item.Properties()) })
-            register(SquareBlockCorner.NAME, Supplier { BlockItem(SQUARE_BLOCK_CORNER, Item.Properties()) })
             register(SquareBlockDiagonal.NAME, Supplier { BlockItem(SQUARE_BLOCK_DIAGONAL, Item.Properties()) })
             register(SquareBlockCross.NAME, Supplier { BlockItem(SQUARE_BLOCK_CROSS, Item.Properties()) })
         }
