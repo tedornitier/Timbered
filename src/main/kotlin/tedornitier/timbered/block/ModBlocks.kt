@@ -6,6 +6,7 @@ import tedornitier.timbered.Timbered
 import net.neoforged.neoforge.registries.DeferredRegister
 
 import thedarkcolour.kotlinforforge.neoforge.forge.getValue
+import java.util.function.Supplier
 
 object ModBlocks {
     val REGISTRY = DeferredRegister.createBlocks(Timbered.ID)
@@ -20,17 +21,19 @@ object ModBlocks {
     val SQUARE_BLOCK_DIAGONAL by REGISTRY.register(SquareBlockDiagonal.NAME) { ->
         SquareBlockDiagonal()
     }
+    val SQUARE_BLOCK_CROSS by REGISTRY.register(SquareBlockCross.NAME) { ->
+        SquareBlockCross()
+    }
 
     // Register block items
     val BLOCK_ITEMS = DeferredRegister.createItems(Timbered.ID)
 
-    val SQUARE_ITEM by BLOCK_ITEMS.register(SquareBlock.NAME) { ->
-        BlockItem(SQUARE_BLOCK, Item.Properties())
-    }
-    val SQUARE_CORNER_ITEM by BLOCK_ITEMS.register(SquareBlockCorner.NAME) { ->
-        BlockItem(SQUARE_BLOCK_CORNER, Item.Properties())
-    }
-    val SQUARE_DIAGONAL_ITEM by BLOCK_ITEMS.register(SquareBlockDiagonal.NAME) { ->
-        BlockItem(SQUARE_BLOCK_DIAGONAL, Item.Properties())
+    init {
+        BLOCK_ITEMS.run {
+            register(SquareBlock.NAME, Supplier { BlockItem(SQUARE_BLOCK, Item.Properties()) })
+            register(SquareBlockCorner.NAME, Supplier { BlockItem(SQUARE_BLOCK_CORNER, Item.Properties()) })
+            register(SquareBlockDiagonal.NAME, Supplier { BlockItem(SQUARE_BLOCK_DIAGONAL, Item.Properties()) })
+            register(SquareBlockCross.NAME, Supplier { BlockItem(SQUARE_BLOCK_CROSS, Item.Properties()) })
+        }
     }
 }
