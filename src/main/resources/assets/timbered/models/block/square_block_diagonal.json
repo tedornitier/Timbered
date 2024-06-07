@@ -1,13 +1,13 @@
 {
   "parent": "block/cube",
   "textures": {
-    "particle": "timbered:block/square_block_diagonal",
-    "north": "timbered:block/square_block_diagonal",
-    "south": "timbered:block/square_block_diagonal",
-    "east": "timbered:block/square_block_diagonal",
-    "west": "timbered:block/square_block_diagonal",
-    "up": "timbered:block/square_block_diagonal",
-    "down": "timbered:block/square_block_diagonal"
+    "particle": "timbered:block/square_block_diagonal_oak",
+    "north": "timbered:block/square_block_diagonal_oak",
+    "south": "timbered:block/square_block_diagonal_oak",
+    "east": "timbered:block/square_block_diagonal_oak",
+    "west": "timbered:block/square_block_diagonal_oak",
+    "up": "timbered:block/square_block_diagonal_oak",
+    "down": "timbered:block/square_block_diagonal_oak"
   },
   "elements": [
     {
