@@ -2,17 +2,17 @@
   "type": "minecraft:crafting_shaped",
   "category": "building_blocks",
   "key": {
-    "w": {
+    "#": {
       "item": "minecraft:oak_planks"
     },
-    "t": {
+    ".": {
       "item": "minecraft:white_terracotta"
     }
   },
   "pattern": [
-    "wwt",
-    "wtw",
-    "tww"
+    "..#",
+    ".#.",
+    "#.."
   ],
   "result": {
     "id": "timbered:square_block_diagonal",
