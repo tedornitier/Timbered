@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building_blocks",
+  "key": {
+    "w": {
+      "item": "minecraft:oak_planks"
+    },
+    "t": {
+      "item": "minecraft:white_terracotta"
+    }
+  },
+  "pattern": [
+    "wtw",
+    "tww",
+    "www"
+  ],
+  "result": {
+    "id": "timbered:square_block_high_diagonal",
+    "count": 8
+  }
+}
