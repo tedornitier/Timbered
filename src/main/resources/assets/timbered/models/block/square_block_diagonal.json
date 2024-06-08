@@ -4,23 +4,9 @@
     "particle": "timbered:block/square_block_diagonal_oak",
     "north": "timbered:block/square_block_diagonal_oak",
     "south": "timbered:block/square_block_diagonal_oak",
-    "east": "timbered:block/square_block_diagonal_oak",
-    "west": "timbered:block/square_block_diagonal_oak",
+    "east": "timbered:block/square_block_diagonal_inverted_oak",
+    "west": "timbered:block/square_block_diagonal_inverted_oak",
     "up": "timbered:block/square_block_diagonal_oak",
     "down": "timbered:block/square_block_diagonal_oak"
-  },
-  "elements": [
-    {
-      "from": [0, 0, 0],
-      "to": [16, 16, 16],
-      "faces": {
-        "north": { "uv": [0, 0, 16, 16], "texture": "#north" },
-        "west": { "uv": [0, 0, 16, 16], "texture": "#west"},
-        "down": { "uv": [0, 0, 16, 16], "texture": "#down" },
-        "up": { "uv": [0, 0, 16, 16], "texture": "#up" },
-        "east": { "uv": [0, 0, 16, 16], "texture": "#east", "rotation": 270 },
-        "south": { "uv": [0, 0, 16, 16], "texture": "#south", "rotation": 90 }
-      }
-    }
-  ]
+  }
 }
