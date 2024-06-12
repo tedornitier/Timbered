@@ -1,8 +1,6 @@
 {
   "variants": {
-    "facing=north": { "model": "timbered:block/square_block_diagonal" },
-    "facing=east": { "model": "timbered:block/square_block_diagonal", "y": 90 },
-    "facing=south": { "model": "timbered:block/square_block_diagonal", "y": 180 },
-    "facing=west": { "model": "timbered:block/square_block_diagonal", "y": 270 }
+    "facing_y_axis=true": { "model": "timbered:block/square_block_diagonal" },
+    "facing_y_axis=false": { "model": "timbered:block/square_block_diagonal", "y": 90 }
   }
 }
