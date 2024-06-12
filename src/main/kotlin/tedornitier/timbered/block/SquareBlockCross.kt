@@ -11,6 +11,15 @@ class SquareBlockCross : TimberedBlock() {
             .#.
             #.#
         """.trimIndent()
+
+        override fun getLocalizedName(locale: String): String {
+            return when (locale) {
+                "en_us" -> "half-timbered cross block"
+                "de_de" -> "Fachwerkkreuzblock"
+                "it_it" -> "Blocco a croce a mezza trave"
+                else -> TODO()
+            }
+        }
     }
 
     override val timberedObject: TimberedObject = Companion

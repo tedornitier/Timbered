@@ -11,6 +11,15 @@ class SquareBlockHighDiagonal : TopBottomMirroredBlock() {
             #..
             ...
         """.trimIndent()
+
+        override fun getLocalizedName(locale: String): String {
+            return when (locale) {
+                "en_us" -> "half-timbered high diagonal block"
+                "de_de" -> "Fachwerkhoherdiagonalblock"
+                "it_it" -> "Blocco diagonale alto a mezza trave"
+                else -> TODO()
+            }
+        }
     }
 
     override val timberedObject: TimberedObject = Companion
