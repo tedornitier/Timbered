@@ -1,5 +1,5 @@
 package tedornitier.timbered.block
 
-object TimberedBlocks { // TODO enum / sealed class
-    val blocks = listOf(SquareBlock, SquareBlockCross, SquareBlockDiagonal, SquareBlockHighDiagonal)
+object TimberedBlocks {
+    val blocks = listOf(SquareBlock::class, SquareBlockCross::class, SquareBlockDiagonal::class, SquareBlockHighDiagonal::class)
 }

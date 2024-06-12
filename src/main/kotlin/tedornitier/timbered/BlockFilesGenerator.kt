@@ -1,8 +1,11 @@
 package tedornitier.timbered
 
 import tedornitier.timbered.block.TimberedBlocks.blocks
+import tedornitier.timbered.block.TimberedObject
 import tedornitier.timbered.block.TimberedWoodTypes.woodTypes
 import java.io.File
+import kotlin.reflect.full.companionObject
+import kotlin.reflect.full.companionObjectInstance
 
 fun createModelBlock(
     prefix: String, blockName: String, woodType: String, sides: Pair<String, String>? = null
@@ -97,14 +100,15 @@ fun main() {
             println("Generated JSON for blockstates square_block_high_diagonal $woodType: ${it.absolutePath}")
         }
         blocks.forEach { block ->
-            File("src/main/resources/assets/timbered/models/item/${block.name}_$woodType.json").let {
+            val blockCompanionObject = block.companionObjectInstance as TimberedObject
+            File("src/main/resources/assets/timbered/models/item/${blockCompanionObject.name}_$woodType.json").let {
                 it.writeText("""
                         {
-                          "parent": "timbered:block/${block.defaultModelName}_$woodType"
+                          "parent": "timbered:block/${blockCompanionObject.defaultModelName}_$woodType"
                         }
                 """.trimIndent()
                 )
-                println("Generated JSON for item ${block.name} $woodType model block: ${it.absolutePath}")
+                println("Generated JSON for item ${blockCompanionObject.name} $woodType model block: ${it.absolutePath}")
             }
         }
     }
