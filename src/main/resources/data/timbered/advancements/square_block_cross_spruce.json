@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_spruce_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:spruce_planks"
+          }
+        ]
+      }
+    },
+    "has_white_terracotta": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:white_terracotta"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_spruce_planks", "has_white_terracotta"]
+  ],
+  "rewards": {
+    "recipes": [
+      "timbered:square_block_cross_spruce"
+    ]
+  }
+}

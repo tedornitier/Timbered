@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "timbered:block/square_block_cross_dark_oak",
+    "north": "timbered:block/square_block_cross_dark_oak",
+    "south": "timbered:block/square_block_cross_dark_oak",
+    "east": "timbered:block/square_block_cross_dark_oak",
+    "west": "timbered:block/square_block_cross_dark_oak",
+    "up": "timbered:block/square_block_cross_dark_oak",
+    "down": "timbered:block/square_block_cross_dark_oak"
+  }
+}

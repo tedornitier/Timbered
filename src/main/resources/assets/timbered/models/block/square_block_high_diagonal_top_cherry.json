@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "timbered:block/square_block_high_diagonal_top_left_cherry",
+    "north": "timbered:block/square_block_high_diagonal_top_left_cherry",
+    "south": "timbered:block/square_block_high_diagonal_top_left_cherry",
+    "east": "timbered:block/square_block_high_diagonal_top_right_cherry",
+    "west": "timbered:block/square_block_high_diagonal_top_right_cherry",
+    "up": "timbered:block/square_block_high_diagonal_top_left_cherry",
+    "down": "timbered:block/square_block_high_diagonal_top_left_cherry"
+  }
+}

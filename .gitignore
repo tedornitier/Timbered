@@ -23,3 +23,9 @@ run
 runs
 
 .kotlin/sessions/
+
+logs/debug.log
+
+logs/latest.log
+
+texture_generator/wood
