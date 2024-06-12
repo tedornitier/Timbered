@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_oak_planks": {
+    "has_jungle_planks": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "minecraft:oak_planks"
+            "item": "minecraft:jungle_planks"
           }
         ]
       }
@@ -23,11 +23,11 @@
     }
   },
   "requirements": [
-    ["has_oak_planks", "has_white_terracotta"]
+    ["has_jungle_planks", "has_white_terracotta"]
   ],
   "rewards": {
     "recipes": [
-      "timbered:square_block_high_diagonal"
+      "timbered:square_block_high_diagonal_jungle"
     ]
   }
 }

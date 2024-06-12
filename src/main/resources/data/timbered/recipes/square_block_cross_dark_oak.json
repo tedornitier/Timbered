@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building_blocks",
+  "key": {
+    "#": {
+      "item": "minecraft:dark_oak_planks"
+    },
+    ".": {
+      "item": "minecraft:white_terracotta"
+    }
+  },
+  "pattern": [
+    "#.#",
+    ".#.",
+    "#.#"
+  ],
+  "result": {
+    "id": "timbered:square_block_cross_dark_oak",
+    "count": 8
+  }
+}

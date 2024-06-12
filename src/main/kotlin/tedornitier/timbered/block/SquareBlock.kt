@@ -6,6 +6,11 @@ class SquareBlock : TimberedBlock() {
         override val defaultModelName = "square_block"
         override val hasLeftRight = false
         override val hasTopBottom = false
+        override val recipePattern = """
+            ###
+            #.#
+            ###
+        """.trimIndent()
     }
 
     override val timberedObject: TimberedObject = Companion

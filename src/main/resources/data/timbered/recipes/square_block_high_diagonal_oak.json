@@ -10,12 +10,12 @@
     }
   },
   "pattern": [
-    "..#",
     ".#.",
-    "#.."
+    "#..",
+    "..."
   ],
   "result": {
-    "id": "timbered:square_block_diagonal",
+    "id": "timbered:square_block_high_diagonal_oak",
     "count": 8
   }
 }

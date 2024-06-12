@@ -5,4 +5,5 @@ interface TimberedObject {
     val defaultModelName: String
     val hasLeftRight: Boolean
     val hasTopBottom: Boolean
+    val recipePattern: String
 }

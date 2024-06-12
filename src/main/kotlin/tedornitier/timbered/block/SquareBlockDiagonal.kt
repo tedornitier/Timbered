@@ -6,6 +6,11 @@ class SquareBlockDiagonal : MirroredBlock() {
         override val defaultModelName = "square_block_diagonal"
         override val hasLeftRight = true
         override val hasTopBottom = false
+        override val recipePattern = """
+            ..#
+            .#.
+            #..
+        """.trimIndent()
     }
 
     override val timberedObject: TimberedObject = Companion

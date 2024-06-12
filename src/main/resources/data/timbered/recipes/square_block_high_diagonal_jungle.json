@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building_blocks",
+  "key": {
+    "#": {
+      "item": "minecraft:jungle_planks"
+    },
+    ".": {
+      "item": "minecraft:white_terracotta"
+    }
+  },
+  "pattern": [
+    ".#.",
+    "#..",
+    "..."
+  ],
+  "result": {
+    "id": "timbered:square_block_high_diagonal_jungle",
+    "count": 8
+  }
+}

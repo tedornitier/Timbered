@@ -100,6 +100,72 @@ fun main() {
                 )
                 println("Generated JSON for item ${blockData.name} $woodType model block: ${it.absolutePath}")
             }
+            File("src/main/resources/data/timbered/recipes/${blockData.name}_$woodType.json").let {
+                val material = if (woodType == "bamboo") woodType else woodType + "_planks"
+                val pattern = blockData.recipePattern.lines().joinToString(",\n") { craftingLine -> "    \"$craftingLine\"" }
+                it.writeText("""{
+  "type": "minecraft:crafting_shaped",
+  "category": "building_blocks",
+  "key": {
+    "#": {
+      "item": "minecraft:$material"
+    },
+    ".": {
+      "item": "minecraft:white_terracotta"
+    }
+  },
+  "pattern": [
+$pattern
+  ],
+  "result": {
+    "id": "timbered:${blockData.name}_$woodType",
+    "count": 8
+  }
+}
+"""
+                )
+                println("Generated JSON for recipe ${blockData.name} $woodType: ${it.absolutePath}")
+            }
+            File("src/main/resources/data/timbered/advancements/${blockData.name}_$woodType.json").let { // FIXME recipes get unlocked with everything
+                val material = if (woodType == "bamboo") woodType else woodType + "_planks"
+                val pattern = blockData.recipePattern.lines().joinToString(",\n") { craftingLine -> "    \"$craftingLine\"" }
+                it.writeText("""{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_$material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:$material"
+          }
+        ]
+      }
+    },
+    "has_white_terracotta": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:white_terracotta"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_$material", "has_white_terracotta"]
+  ],
+  "rewards": {
+    "recipes": [
+      "timbered:${blockData.name}_$woodType"
+    ]
+  }
+}
+"""
+                )
+                println("Generated JSON for recipe ${blockData.name} $woodType: ${it.absolutePath}")
+            }
         }
     }
 }

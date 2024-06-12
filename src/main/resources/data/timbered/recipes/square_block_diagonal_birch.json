@@ -3,19 +3,19 @@
   "category": "building_blocks",
   "key": {
     "#": {
-      "item": "minecraft:oak_planks"
+      "item": "minecraft:birch_planks"
     },
     ".": {
       "item": "minecraft:white_terracotta"
     }
   },
   "pattern": [
-    "###",
-    "#.#",
-    "###"
+    "..#",
+    ".#.",
+    "#.."
   ],
   "result": {
-    "id": "timbered:square_block",
+    "id": "timbered:square_block_diagonal_birch",
     "count": 8
   }
 }
