@@ -5,7 +5,6 @@ import net.minecraft.world.item.Item
 import net.neoforged.neoforge.registries.DeferredRegister
 import tedornitier.timbered.Timbered
 import tedornitier.timbered.block.TimberedWoodTypes.woodTypes
-import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 import java.util.function.Supplier
 
 object ModBlocks {
@@ -13,17 +12,18 @@ object ModBlocks {
     val BLOCK_ITEMS = DeferredRegister.createItems(Timbered.ID)
 
     init {
-        BLOCK_ITEMS.run {
-            woodTypes.forEach { wood ->
-                val SQUARE_BLOCK by REGISTRY.register("${SquareBlock.NAME}_$wood") { -> SquareBlock() }
-                val SQUARE_BLOCK_DIAGONAL by REGISTRY.register("${SquareBlockDiagonal.NAME}_$wood") { -> SquareBlockDiagonal() }
-                val SQUARE_BLOCK_CROSS by REGISTRY.register("${SquareBlockCross.NAME}_$wood") { -> SquareBlockCross() }
-                val SQUARE_BLOCK_HIGH_DIAGONAL by REGISTRY.register("${SquareBlockHighDiagonal.NAME}_$wood") { -> SquareBlockHighDiagonal() }
-
-                register("${SquareBlock.NAME}_$wood", Supplier { BlockItem(SQUARE_BLOCK, Item.Properties()) })
-                register("${SquareBlockDiagonal.NAME}_$wood", Supplier { BlockItem(SQUARE_BLOCK_DIAGONAL, Item.Properties()) })
-                register("${SquareBlockCross.NAME}_$wood", Supplier { BlockItem(SQUARE_BLOCK_CROSS, Item.Properties()) })
-                register("${SquareBlockHighDiagonal.NAME}_$wood", Supplier { BlockItem(SQUARE_BLOCK_HIGH_DIAGONAL, Item.Properties()) })
+        woodTypes.forEach { wood ->
+            REGISTRY.register("${SquareBlock.NAME}_$wood") { -> SquareBlock() }.also {
+                BLOCK_ITEMS.register("${SquareBlock.NAME}_$wood", Supplier { BlockItem(it.get(), Item.Properties()) })
+            }
+            REGISTRY.register("${SquareBlockDiagonal.NAME}_$wood") { -> SquareBlockDiagonal() }.also {
+                BLOCK_ITEMS.register("${SquareBlockDiagonal.NAME}_$wood", Supplier { BlockItem(it.get(), Item.Properties()) })
+            }
+            REGISTRY.register("${SquareBlockCross.NAME}_$wood") { -> SquareBlockCross() }.also {
+                BLOCK_ITEMS.register("${SquareBlockCross.NAME}_$wood", Supplier { BlockItem(it.get(), Item.Properties()) })
+            }
+            REGISTRY.register("${SquareBlockHighDiagonal.NAME}_$wood") { -> SquareBlockHighDiagonal() }.also {
+                BLOCK_ITEMS.register("${SquareBlockHighDiagonal.NAME}_$wood", Supplier { BlockItem(it.get(), Item.Properties()) })
             }
         }
     }
