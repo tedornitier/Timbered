@@ -4,7 +4,6 @@ import tedornitier.timbered.block.TimberedBlocks.blocks
 import tedornitier.timbered.block.TimberedObject
 import tedornitier.timbered.block.TimberedWoodTypes.woodTypes
 import java.io.File
-import kotlin.reflect.full.companionObject
 import kotlin.reflect.full.companionObjectInstance
 
 fun createModelBlock(
@@ -36,79 +35,70 @@ fun createBlockState(blockPrefix: String, blockName: String, woodType: String): 
 
 fun main() {
     val blockPrefix = "timbered:block"
-    val sameTextureBlockNames = listOf("square_block", "square_block_cross")
-    val mirroredTextureBlockModelsNames = listOf("square_block_diagonal", "square_block_high_diagonal_bottom", "square_block_high_diagonal_top")
     woodTypes.forEach { woodType ->
-        sameTextureBlockNames.forEach { blockName ->
-            File("src/main/resources/assets/timbered/models/block/${blockName}_$woodType.json").let {
-                it.writeText(createModelBlock(blockPrefix, blockName, woodType))
-                println("Generated JSON for simple $blockName $woodType model block: ${it.absolutePath}")
-            }
-        }
-        mirroredTextureBlockModelsNames.forEach { blockName ->
-            File("src/main/resources/assets/timbered/models/block/${blockName}_$woodType.json").let {
-                it.writeText(createModelBlock(blockPrefix, blockName, woodType, Pair("left", "right")))
-                println("Generated JSON for mirrored $blockName $woodType model block: ${it.absolutePath}")
-            }
-        }
-        sameTextureBlockNames.forEach { blockName ->
-            File("src/main/resources/assets/timbered/blockstates/${blockName}_$woodType.json").let {
-                it.writeText(createBlockState(blockPrefix, blockName, woodType))
-                println("Generated JSON for blockstates $blockName $woodType: ${it.absolutePath}")
-            }
-        }
-        File("src/main/resources/assets/timbered/blockstates/square_block_diagonal_$woodType.json").let {
-            it.writeText(
-                """
-                {
-                  "variants": {
-                    "facing_y_axis=true": { "model": "timbered:block/square_block_diagonal_$woodType" },
-                    "facing_y_axis=false": { "model": "timbered:block/square_block_diagonal_$woodType", "y": 90 }
-                  }
+        blocks.forEach { blockClass ->
+            val blockData = blockClass.companionObjectInstance as TimberedObject
+            if (!blockData.hasLeftRight && !blockData.hasTopBottom) { // TODO replace with enum type
+                File("src/main/resources/assets/timbered/models/block/${blockData.name}_$woodType.json").let {
+                    it.writeText(createModelBlock(blockPrefix, blockData.name, woodType))
+                    println("Generated JSON for simple ${blockData.name} $woodType model block: ${it.absolutePath}")
                 }
-            """.trimIndent()
-            )
-            println("Generated JSON for blockstates square_block_diagonal $woodType: ${it.absolutePath}")
-        }
-        File("src/main/resources/assets/timbered/blockstates/square_block_diagonal_$woodType.json").let {
-            it.writeText(
-                """
-                {
-                  "variants": {
-                    "facing_y_axis=true": { "model": "timbered:block/square_block_diagonal_$woodType" },
-                    "facing_y_axis=false": { "model": "timbered:block/square_block_diagonal_$woodType", "y": 90 }
-                  }
+                File("src/main/resources/assets/timbered/blockstates/${blockData.name}_$woodType.json").let {
+                    it.writeText(createBlockState(blockPrefix, blockData.name, woodType))
+                    println("Generated JSON for blockstates ${blockData.name} $woodType: ${it.absolutePath}")
                 }
-            """.trimIndent()
-            )
-            println("Generated JSON for blockstates square_block_diagonal $woodType: ${it.absolutePath}")
-        }
-        File("src/main/resources/assets/timbered/blockstates/square_block_high_diagonal_$woodType.json").let {
-            it.writeText(
-                """
-                {
-                  "variants": {
-                    "facing_y_axis=true,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top_$woodType", "y": 90 },
-                    "facing_y_axis=false,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top_$woodType"},
-
-                    "facing_y_axis=true,bottom=true": { "model": "timbered:block/square_block_high_diagonal_bottom_$woodType" },
-                    "facing_y_axis=false,bottom=true": { "model": "timbered:block/square_block_high_diagonal_bottom_$woodType", "y": 90 }
-                  }
+            }
+            if (blockData.hasLeftRight && !blockData.hasTopBottom) { // TODO replace with enum type
+                File("src/main/resources/assets/timbered/models/block/${blockData.name}_$woodType.json").let {
+                    it.writeText(createModelBlock(blockPrefix, blockData.name, woodType, Pair("left", "right")))
+                    println("Generated JSON for mirrored ${blockData.name} $woodType model block: ${it.absolutePath}")
                 }
-            """.trimIndent()
-            )
-            println("Generated JSON for blockstates square_block_high_diagonal $woodType: ${it.absolutePath}")
-        }
-        blocks.forEach { block ->
-            val blockCompanionObject = block.companionObjectInstance as TimberedObject
-            File("src/main/resources/assets/timbered/models/item/${blockCompanionObject.name}_$woodType.json").let {
+                File("src/main/resources/assets/timbered/blockstates/${blockData.name}_$woodType.json").let {
+                    it.writeText(
+                        """
+                    {
+                      "variants": {
+                        "facing_y_axis=true": { "model": "timbered:block/${blockData.name}_$woodType" },
+                        "facing_y_axis=false": { "model": "timbered:block/${blockData.name}_$woodType", "y": 90 }
+                      }
+                    }
+                """.trimIndent()
+                    )
+                    println("Generated JSON for blockstates ${blockData.name} $woodType: ${it.absolutePath}")
+                }
+            }
+            if (blockData.hasLeftRight && blockData.hasTopBottom) { // TODO replace with enum type
+                File("src/main/resources/assets/timbered/blockstates/${blockData.name}_$woodType.json").let {
+                    it.writeText(
+                        """
+                            {
+                              "variants": {
+                                "facing_y_axis=true,bottom=false": { "model": "timbered:block/${blockData.name}_top_$woodType", "y": 90 },
+                                "facing_y_axis=false,bottom=false": { "model": "timbered:block/${blockData.name}_top_$woodType"},
+            
+                                "facing_y_axis=true,bottom=true": { "model": "timbered:block/${blockData.name}_bottom_$woodType" },
+                                "facing_y_axis=false,bottom=true": { "model": "timbered:block/${blockData.name}_bottom_$woodType", "y": 90 }
+                              }
+                            }
+                        """.trimIndent()
+                    )
+                    println("Generated JSON for blockstates ${blockData.name} $woodType: ${it.absolutePath}")
+                }
+                listOf("top", "bottom").forEach { verticalSide ->
+                    File("src/main/resources/assets/timbered/models/block/${blockData.name}_${verticalSide}_$woodType.json").let {
+                        it.writeText(createModelBlock(blockPrefix, "${blockData.name}_$verticalSide", woodType, Pair("left", "right")))
+                        println("Generated JSON for mirrored ${blockData.name} $verticalSide $woodType model block: ${it.absolutePath}")
+                    }
+                }
+            }
+            File("src/main/resources/assets/timbered/models/item/${blockData.name}_$woodType.json").let {
                 it.writeText("""
                         {
-                          "parent": "timbered:block/${blockCompanionObject.defaultModelName}_$woodType"
+                          "parent": "timbered:block/${blockData.defaultModelName}_$woodType"
                         }
                 """.trimIndent()
                 )
-                println("Generated JSON for item ${blockCompanionObject.name} $woodType model block: ${it.absolutePath}")
+                println("Generated JSON for item ${blockData.name} $woodType model block: ${it.absolutePath}")
             }
         }
     }
