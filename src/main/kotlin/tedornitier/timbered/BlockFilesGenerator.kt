@@ -1,5 +1,6 @@
 package tedornitier.timbered
 
+import tedornitier.timbered.block.TimberedBlocks.blocks
 import tedornitier.timbered.block.TimberedWoodTypes.woodTypes
 import java.io.File
 
@@ -33,9 +34,7 @@ fun createBlockState(blockPrefix: String, blockName: String, woodType: String): 
 fun main() {
     val blockPrefix = "timbered:block"
     val sameTextureBlockNames = listOf("square_block", "square_block_cross")
-    val mirroredTextureBlockNames =
-        listOf("square_block_diagonal", "square_block_high_diagonal_bottom", "square_block_high_diagonal_top")
-    val blocks = listOf("square_block", "square_block_diagonal", "square_block_cross", "square_block_high_diagonal")
+    val mirroredTextureBlockModelsNames = listOf("square_block_diagonal", "square_block_high_diagonal_bottom", "square_block_high_diagonal_top")
     woodTypes.forEach { woodType ->
         sameTextureBlockNames.forEach { blockName ->
             File("src/main/resources/assets/timbered/models/block/${blockName}_$woodType.json").let {
@@ -43,7 +42,7 @@ fun main() {
                 println("Generated JSON for simple $blockName $woodType model block: ${it.absolutePath}")
             }
         }
-        mirroredTextureBlockNames.forEach { blockName ->
+        mirroredTextureBlockModelsNames.forEach { blockName ->
             File("src/main/resources/assets/timbered/models/block/${blockName}_$woodType.json").let {
                 it.writeText(createModelBlock(blockPrefix, blockName, woodType, Pair("left", "right")))
                 println("Generated JSON for mirrored $blockName $woodType model block: ${it.absolutePath}")
@@ -97,15 +96,15 @@ fun main() {
             )
             println("Generated JSON for blockstates square_block_high_diagonal $woodType: ${it.absolutePath}")
         }
-        blocks.forEach { blockName ->
-            File("src/main/resources/assets/timbered/models/item/${blockName}_$woodType.json").let {
+        blocks.forEach { block ->
+            File("src/main/resources/assets/timbered/models/item/${block.name}_$woodType.json").let {
                 it.writeText("""
                         {
-                          "parent": "timbered:block/${blockName}_$woodType"
+                          "parent": "timbered:block/${block.defaultModelName}_$woodType"
                         }
                 """.trimIndent()
                 )
-                println("Generated JSON for item $blockName $woodType model block: ${it.absolutePath}")
+                println("Generated JSON for item ${block.name} $woodType model block: ${it.absolutePath}")
             }
         }
     }
