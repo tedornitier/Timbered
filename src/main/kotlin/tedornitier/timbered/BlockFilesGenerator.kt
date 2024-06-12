@@ -1,8 +1,7 @@
 package tedornitier.timbered
 
+import tedornitier.timbered.block.TimberedWoodTypes.woodTypes
 import java.io.File
-
-val woodTypes = listOf("oak") // TODO, "birch", "spruce", "jungle", "acacia", "dark_oak", "bamboo", "cherry", "crimson", "warped", "mangrove")
 
 fun createModelBlock(
     prefix: String,
@@ -84,8 +83,8 @@ fun main() {
             it.writeText("""
                 {
                   "variants": {
-                    "facing_y_axis=true,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top_$woodType" },
-                    "facing_y_axis=false,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top_$woodType", "y": 90 },
+                    "facing_y_axis=true,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top_$woodType", "y": 90 },
+                    "facing_y_axis=false,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top_$woodType"},
 
                     "facing_y_axis=true,bottom=true": { "model": "timbered:block/square_block_high_diagonal_bottom_$woodType" },
                     "facing_y_axis=false,bottom=true": { "model": "timbered:block/square_block_high_diagonal_bottom_$woodType", "y": 90 }

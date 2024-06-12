@@ -1,7 +1,7 @@
 {
   "variants": {
-    "facing_y_axis=true,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top_oak" },
-    "facing_y_axis=false,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top_oak", "y": 90 },
+    "facing_y_axis=true,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top_oak", "y": 90 },
+    "facing_y_axis=false,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top_oak"},
 
     "facing_y_axis=true,bottom=true": { "model": "timbered:block/square_block_high_diagonal_bottom_oak" },
     "facing_y_axis=false,bottom=true": { "model": "timbered:block/square_block_high_diagonal_bottom_oak", "y": 90 }
