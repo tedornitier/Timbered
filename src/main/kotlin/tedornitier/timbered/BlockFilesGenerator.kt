@@ -230,7 +230,7 @@ fun localizeWoodType(woodType: String, language: String, localizedName: String):
             "bamboo" -> "Bambus"
             "cherry" -> "Kirsch"
             "crimson" -> "Karmesin"
-            "warped" -> "Wirrholz"
+            "warped" -> "Wirr"
             "mangrove" -> "Mangroven"
             else -> throw IllegalArgumentException("Unknown wood type: $woodType")
         } + "-$localizedName"
