@@ -4,10 +4,7 @@ import tedornitier.timbered.block.TimberedWoodTypes.woodTypes
 import java.io.File
 
 fun createModelBlock(
-    prefix: String,
-    blockName: String,
-    woodType: String,
-    sides: Pair<String, String>? = null
+    prefix: String, blockName: String, woodType: String, sides: Pair<String, String>? = null
 ): String {
     val texture = "$prefix/${blockName}" + (sides?.let { "_${it.first}" } ?: "") + "_$woodType"
     val mirroredTexture = sides?.let { "$prefix/${blockName}_${sides.second}_$woodType" } ?: texture
@@ -38,6 +35,7 @@ fun main() {
     val sameTextureBlockNames = listOf("square_block", "square_block_cross")
     val mirroredTextureBlockNames =
         listOf("square_block_diagonal", "square_block_high_diagonal_bottom", "square_block_high_diagonal_top")
+    val blocks = listOf("square_block", "square_block_diagonal", "square_block_cross", "square_block_high_diagonal")
     woodTypes.forEach { woodType ->
         sameTextureBlockNames.forEach { blockName ->
             File("src/main/resources/assets/timbered/models/block/${blockName}_$woodType.json").let {
@@ -58,29 +56,34 @@ fun main() {
             }
         }
         File("src/main/resources/assets/timbered/blockstates/square_block_diagonal_$woodType.json").let {
-            it.writeText("""
+            it.writeText(
+                """
                 {
                   "variants": {
                     "facing_y_axis=true": { "model": "timbered:block/square_block_diagonal_$woodType" },
                     "facing_y_axis=false": { "model": "timbered:block/square_block_diagonal_$woodType", "y": 90 }
                   }
                 }
-            """.trimIndent())
+            """.trimIndent()
+            )
             println("Generated JSON for blockstates square_block_diagonal $woodType: ${it.absolutePath}")
         }
         File("src/main/resources/assets/timbered/blockstates/square_block_diagonal_$woodType.json").let {
-            it.writeText("""
+            it.writeText(
+                """
                 {
                   "variants": {
                     "facing_y_axis=true": { "model": "timbered:block/square_block_diagonal_$woodType" },
                     "facing_y_axis=false": { "model": "timbered:block/square_block_diagonal_$woodType", "y": 90 }
                   }
                 }
-            """.trimIndent())
+            """.trimIndent()
+            )
             println("Generated JSON for blockstates square_block_diagonal $woodType: ${it.absolutePath}")
         }
         File("src/main/resources/assets/timbered/blockstates/square_block_high_diagonal_$woodType.json").let {
-            it.writeText("""
+            it.writeText(
+                """
                 {
                   "variants": {
                     "facing_y_axis=true,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top_$woodType", "y": 90 },
@@ -90,8 +93,20 @@ fun main() {
                     "facing_y_axis=false,bottom=true": { "model": "timbered:block/square_block_high_diagonal_bottom_$woodType", "y": 90 }
                   }
                 }
-            """.trimIndent())
+            """.trimIndent()
+            )
             println("Generated JSON for blockstates square_block_high_diagonal $woodType: ${it.absolutePath}")
+        }
+        blocks.forEach { blockName ->
+            File("src/main/resources/assets/timbered/models/item/${blockName}_$woodType.json").let {
+                it.writeText("""
+                        {
+                          "parent": "timbered:block/${blockName}_$woodType"
+                        }
+                """.trimIndent()
+                )
+                println("Generated JSON for item $blockName $woodType model block: ${it.absolutePath}")
+            }
         }
     }
 }
