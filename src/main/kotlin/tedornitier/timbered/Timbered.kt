@@ -1,16 +1,19 @@
 package tedornitier.timbered
 
-import tedornitier.timbered.block.ModBlocks
 import net.minecraft.client.Minecraft
+import net.minecraft.world.item.CreativeModeTabs
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
 import net.neoforged.fml.common.Mod
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLDedicatedServerSetupEvent
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent
 import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import tedornitier.timbered.block.ModBlocks
+import tedornitier.timbered.block.ModBlocks.blockItems
 import thedarkcolour.kotlinforforge.neoforge.forge.MOD_BUS
 import thedarkcolour.kotlinforforge.neoforge.forge.runForDist
 
@@ -51,5 +54,14 @@ object Timbered {
     @SubscribeEvent
     fun onCommonSetup(event: FMLCommonSetupEvent) {
         logger.log(Level.INFO, "Hello! This is working!")
+    }
+
+    @SubscribeEvent
+    fun buildContents(event: BuildCreativeModeTabContentsEvent) {
+        if (event.tabKey === CreativeModeTabs.BUILDING_BLOCKS) {
+            blockItems.entries.forEach { blockItem ->
+                event.accept(blockItem.get())
+            }
+        }
     }
 }
