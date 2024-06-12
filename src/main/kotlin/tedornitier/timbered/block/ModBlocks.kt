@@ -8,22 +8,22 @@ import tedornitier.timbered.block.TimberedWoodTypes.woodTypes
 import java.util.function.Supplier
 
 object ModBlocks {
-    val REGISTRY = DeferredRegister.createBlocks(Timbered.ID)
-    val BLOCK_ITEMS = DeferredRegister.createItems(Timbered.ID)
+    val registry: DeferredRegister.Blocks = DeferredRegister.createBlocks(Timbered.ID)
+    val blockItems: DeferredRegister.Items = DeferredRegister.createItems(Timbered.ID)
 
     init {
         woodTypes.forEach { wood ->
-            REGISTRY.register("${SquareBlock.NAME}_$wood") { -> SquareBlock() }.also {
-                BLOCK_ITEMS.register("${SquareBlock.NAME}_$wood", Supplier { BlockItem(it.get(), Item.Properties()) })
+            registry.register("${SquareBlock.NAME}_$wood") { -> SquareBlock() }.also {
+                blockItems.register("${SquareBlock.NAME}_$wood", Supplier { BlockItem(it.get(), Item.Properties()) })
             }
-            REGISTRY.register("${SquareBlockDiagonal.NAME}_$wood") { -> SquareBlockDiagonal() }.also {
-                BLOCK_ITEMS.register("${SquareBlockDiagonal.NAME}_$wood", Supplier { BlockItem(it.get(), Item.Properties()) })
+            registry.register("${SquareBlockDiagonal.NAME}_$wood") { -> SquareBlockDiagonal() }.also {
+                blockItems.register("${SquareBlockDiagonal.NAME}_$wood", Supplier { BlockItem(it.get(), Item.Properties()) })
             }
-            REGISTRY.register("${SquareBlockCross.NAME}_$wood") { -> SquareBlockCross() }.also {
-                BLOCK_ITEMS.register("${SquareBlockCross.NAME}_$wood", Supplier { BlockItem(it.get(), Item.Properties()) })
+            registry.register("${SquareBlockCross.NAME}_$wood") { -> SquareBlockCross() }.also {
+                blockItems.register("${SquareBlockCross.NAME}_$wood", Supplier { BlockItem(it.get(), Item.Properties()) })
             }
-            REGISTRY.register("${SquareBlockHighDiagonal.NAME}_$wood") { -> SquareBlockHighDiagonal() }.also {
-                BLOCK_ITEMS.register("${SquareBlockHighDiagonal.NAME}_$wood", Supplier { BlockItem(it.get(), Item.Properties()) })
+            registry.register("${SquareBlockHighDiagonal.NAME}_$wood") { -> SquareBlockHighDiagonal() }.also {
+                blockItems.register("${SquareBlockHighDiagonal.NAME}_$wood", Supplier { BlockItem(it.get(), Item.Properties()) })
             }
         }
     }
