@@ -35,9 +35,21 @@ fun createBlockState(blockPrefix: String, blockName: String, woodType: String): 
 
 fun main() {
     val blockPrefix = "timbered:block"
+    val languages: List<Pair<String, MutableList<String>>> = listOf(
+        "en_us" to mutableListOf(),
+        "de_de" to mutableListOf(),
+        "it_it" to mutableListOf()
+    )
     woodTypes.forEach { woodType ->
         blocks.forEach { blockClass ->
             val blockData = blockClass.companionObjectInstance as TimberedObject
+            languages.forEach { languagePair ->
+                val language = languagePair.first
+                val id = "block.timbered.${blockData.name}_$woodType"
+                val translation = localizeWoodType(woodType, language, blockData.getLocalizedName(language))
+                languagePair.second.add("  \"$id\" : \"$translation\"")
+            }
+
             if (!blockData.hasLeftRight && !blockData.hasTopBottom) { // TODO replace with enum type
                 File("src/main/resources/assets/timbered/models/block/${blockData.name}_$woodType.json").let {
                     it.writeText(createModelBlock(blockPrefix, blockData.name, woodType))
@@ -86,13 +98,21 @@ fun main() {
                 }
                 listOf("top", "bottom").forEach { verticalSide ->
                     File("src/main/resources/assets/timbered/models/block/${blockData.name}_${verticalSide}_$woodType.json").let {
-                        it.writeText(createModelBlock(blockPrefix, "${blockData.name}_$verticalSide", woodType, Pair("left", "right")))
+                        it.writeText(
+                            createModelBlock(
+                                blockPrefix,
+                                "${blockData.name}_$verticalSide",
+                                woodType,
+                                Pair("left", "right")
+                            )
+                        )
                         println("Generated JSON for mirrored ${blockData.name} $verticalSide $woodType model block: ${it.absolutePath}")
                     }
                 }
             }
             File("src/main/resources/assets/timbered/models/item/${blockData.name}_$woodType.json").let {
-                it.writeText("""
+                it.writeText(
+                    """
                         {
                           "parent": "timbered:block/${blockData.defaultModelName}_$woodType"
                         }
@@ -102,8 +122,10 @@ fun main() {
             }
             File("src/main/resources/data/timbered/recipes/${blockData.name}_$woodType.json").let {
                 val material = if (woodType == "bamboo") woodType else woodType + "_planks"
-                val pattern = blockData.recipePattern.lines().joinToString(",\n") { craftingLine -> "    \"$craftingLine\"" }
-                it.writeText("""{
+                val pattern =
+                    blockData.recipePattern.lines().joinToString(",\n") { craftingLine -> "    \"$craftingLine\"" }
+                it.writeText(
+                    """{
   "type": "minecraft:crafting_shaped",
   "category": "building_blocks",
   "key": {
@@ -128,8 +150,8 @@ $pattern
             }
             File("src/main/resources/data/timbered/advancements/${blockData.name}_$woodType.json").let { // FIXME recipes get unlocked with everything
                 val material = if (woodType == "bamboo") woodType else woodType + "_planks"
-                val pattern = blockData.recipePattern.lines().joinToString(",\n") { craftingLine -> "    \"$craftingLine\"" }
-                it.writeText("""{
+                it.writeText(
+                    """{
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_$material": {
@@ -167,5 +189,67 @@ $pattern
                 println("Generated JSON for recipe ${blockData.name} $woodType: ${it.absolutePath}")
             }
         }
+    }
+    languages.forEach { languagePair ->
+        val language = languagePair.first
+        File("src/main/resources/assets/timbered/lang/$language.json").let {
+            it.writeText(
+                """{
+${languagePair.second.joinToString(",\n")}
+}""".trimIndent()
+            )
+            println("Generated JSON for language $language: ${it.absolutePath}")
+        }
+    }
+}
+
+fun localizeWoodType(woodType: String, language: String, localizedName: String): String {
+    return when (language) {
+        "en_us" -> when (woodType) {
+            "oak" -> "Oak"
+            "birch" -> "Birch"
+            "spruce" -> "Spruce"
+            "jungle" -> "Jungle"
+            "acacia" -> "Acacia"
+            "dark_oak" -> "Dark oak"
+            "bamboo" -> "Bamboo"
+            "cherry" -> "Cherry"
+            "crimson" -> "Crimson"
+            "warped" -> "Warped"
+            "mangrove" -> "Mangrove"
+            else -> throw IllegalArgumentException("Unknown wood type: $woodType")
+        } + " $localizedName"
+
+        "de_de" -> when (woodType) {
+            "oak" -> "Eichen"
+            "birch" -> "Birken"
+            "spruce" -> "Fichten"
+            "jungle" -> "Tropen"
+            "acacia" -> "Akazien"
+            "dark_oak" -> "Schwarzeichen"
+            "bamboo" -> "Bambus"
+            "cherry" -> "Kirsch"
+            "crimson" -> "Karmesin"
+            "warped" -> "Wirrholz"
+            "mangrove" -> "Mangroven"
+            else -> throw IllegalArgumentException("Unknown wood type: $woodType")
+        } + "-$localizedName"
+
+        "it_it" -> "$localizedName " + when (woodType) {
+            "oak" -> "di quercia"
+            "birch" -> "di betulla"
+            "spruce" -> "di abete"
+            "jungle" -> "della giungla"
+            "acacia" -> "di acacia"
+            "dark_oak" -> "di quercia scura"
+            "bamboo" -> "di bambù"
+            "cherry" -> "di ciliegio"
+            "crimson" -> "cremisi"
+            "warped" -> "distorto"
+            "mangrove" -> "di mangrovia"
+            else -> throw IllegalArgumentException("Unknown wood type: $woodType")
+        }
+
+        else -> throw IllegalArgumentException("Unknown language: $language")
     }
 }

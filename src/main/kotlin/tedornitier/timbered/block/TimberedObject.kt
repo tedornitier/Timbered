@@ -6,4 +6,6 @@ interface TimberedObject {
     val hasLeftRight: Boolean
     val hasTopBottom: Boolean
     val recipePattern: String
+
+    fun getLocalizedName(locale: String): String
 }
