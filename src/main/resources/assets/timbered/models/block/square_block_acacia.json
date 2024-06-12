@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "timbered:block/square_block_acacia",
+    "north": "timbered:block/square_block_acacia",
+    "south": "timbered:block/square_block_acacia",
+    "east": "timbered:block/square_block_acacia",
+    "west": "timbered:block/square_block_acacia",
+    "up": "timbered:block/square_block_acacia",
+    "down": "timbered:block/square_block_acacia"
+  }
+}

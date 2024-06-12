@@ -28,7 +28,7 @@ fun main() {
     }
 
     outputImages.forEachIndexed { index, image ->
-        ImageIO.write(image, "png", File("texture_generator/output/${names[index]}.png"))
+        ImageIO.write(image, "png", File("src/main/resources/assets/timbered/textures/block/${names[index]}.png"))
     }
 }
 

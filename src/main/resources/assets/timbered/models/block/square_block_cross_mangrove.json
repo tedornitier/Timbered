@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "timbered:block/square_block_cross_mangrove",
+    "north": "timbered:block/square_block_cross_mangrove",
+    "south": "timbered:block/square_block_cross_mangrove",
+    "east": "timbered:block/square_block_cross_mangrove",
+    "west": "timbered:block/square_block_cross_mangrove",
+    "up": "timbered:block/square_block_cross_mangrove",
+    "down": "timbered:block/square_block_cross_mangrove"
+  }
+}

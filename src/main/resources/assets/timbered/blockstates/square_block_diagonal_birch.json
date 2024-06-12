@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "facing_y_axis=true": { "model": "timbered:block/square_block_diagonal_birch" },
+    "facing_y_axis=false": { "model": "timbered:block/square_block_diagonal_birch", "y": 90 }
+  }
+}

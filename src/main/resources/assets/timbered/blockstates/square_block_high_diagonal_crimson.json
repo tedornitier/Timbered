@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "facing_y_axis=true,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top_crimson", "y": 90 },
+    "facing_y_axis=false,bottom=false": { "model": "timbered:block/square_block_high_diagonal_top_crimson"},
+
+    "facing_y_axis=true,bottom=true": { "model": "timbered:block/square_block_high_diagonal_bottom_crimson" },
+    "facing_y_axis=false,bottom=true": { "model": "timbered:block/square_block_high_diagonal_bottom_crimson", "y": 90 }
+  }
+}
